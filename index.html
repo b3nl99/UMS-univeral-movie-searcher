@@ -13,48 +13,51 @@
     <header>
       <div class="flex justify-between">
         <button
-          class="text-4xl text-white bg-gray-600 border rounded-md p-2 m-4">
+          class="text-xl text-white bg-gray-600 border rounded-md p-2 m-4">
           Watchlist
         </button>
         <button
-          class="text-4xl text-white bg-gray-600 border-2 rounded-md p-2 m-4">
+          class="text-xl text-white bg-gray-600 border-2 rounded-md p-2 m-4">
           Search History
         </button>
       </div>
     </header>
-    <h1 class="text-5xl font-bold text-center text-white my-4">
+    <h1 class="text-3xl font-bold text-center text-white my-4">
       Universal Movie Search
     </h1>
     <div class="flex justify-center">
       <input
-        class="mx-4 my-4 w-[500px] rounded-md text-2xl px-4"
+        class="mx-4 my-4 max-w-[300px] rounded-md text-xl px-2 md:"
         type="text"
         placeholder="Search movie title"
         id="search-input" />
       <button
-        class="text-3xl text-white border rounded-md px-4 my-4"
+        class="text-2xl text-white border rounded-md px-2 my-4"
         id="search-button">
         Search
       </button>
     </div>
     <main>
-      <section class="max-w-[1240px] mx-auto my-6">
+      <section class="max-w-[700px] md:max-w-[1240px] mx-auto my-8">
         <div
-          class="flex flex-col md:flex-row border border-white bg-gray-800 rounded-lg">
-          <img
-            class="max-w-[500px]"
-            src="https://images.thedirect.com/media/photos/FeJ0BJtWIAUecOG.jpg"
-            alt="" />
-
-          <ul class="flex flex-col justify-around my-8">
-            <li class="text-4xl mx-8 p-4 text-white">TITLE:</li>
-            <li class="text-4xl mx-8 p-4 text-white">YEAR:</li>
-            <li class="text-4xl mx-8 p-4 text-white">RUNTIME:</li>
-            <button
-              class="text-2xl bg-gray-800 text-white border border-white rounded-md mx-4 p-4">
-              Visit TMBD
-            </button>
-          </ul>
+          class="flex flex-col max-w-[700px] items-center md:max-w-[1240px] md:flex-row border border-white bg-gray-800/70 rounded-lg">
+          <div>
+            <img
+              class="max-w-[500px]"
+              src="https://images.thedirect.com/media/photos/FeJ0BJtWIAUecOG.jpg"
+              alt="" />
+          </div>
+          <div>
+            <ul class="flex flex-col justify-around my-8">
+              <li class="text-2xl mx-8 p-4 text-white">TITLE:</li>
+              <li class="text-2xl mx-8 p-4 text-white">YEAR:</li>
+              <li class="text-2xl mx-8 p-4 text-white">RUNTIME:</li>
+              <button
+                class="text-xl bg-gray-800/70 text-white border border-white rounded-md mx-4 p-4">
+                Visit TMBD
+              </button>
+            </ul>
+          </div>
         </div>
       </section>
     </main>
