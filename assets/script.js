@@ -33,7 +33,9 @@ function movieSearch(movie) {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
+
+      document.querySelector('#list-container').innerHTML = '';
 
       let movieTitle = response.results[0].title;
       let movieYear = response.results[0].release_date;
@@ -41,7 +43,7 @@ function movieSearch(movie) {
 
       // Movie Poster
       let moviePosterPath = response.results[0].poster_path;
-      console.log(moviePosterPath);
+      // console.log(moviePosterPath);
 
       let listContainer = document.querySelector('#list-container');
       listContainer.setAttribute('class', 'ml-4');
@@ -53,32 +55,23 @@ function movieSearch(movie) {
       );
 
       let infoTitle = document.createElement('li');
-      infoTitle.setAttribute(
-        'class',
-        'text-2xl md:mx-auto p-4 md:text-4xl text-white'
-      );
+      infoTitle.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
 
       let infoYear = document.createElement('li');
-      infoYear.setAttribute(
-        'class',
-        'text-2xl md:mx-auto p-4 md:text-4xl text-white'
-      );
+      infoYear.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
 
       let infoOverview = document.createElement('li');
-      infoOverview.setAttribute(
-        'class',
-        'text-2xl md:mx-auto p-4 md:text-4xl text-white'
-      );
+      infoOverview.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
 
-      infoTitle.innerHTML = 'TITLE: ' + movieTitle;
+      infoTitle.innerHTML = 'TITLE:  ' + movieTitle;
       infoCard.appendChild(infoTitle);
       listContainer.appendChild(infoCard);
 
-      infoYear.innerHTML = 'YEAR: ' + movieYear;
+      infoYear.innerHTML = 'YEAR:  ' + movieYear;
       infoCard.appendChild(infoYear);
       listContainer.appendChild(infoCard);
 
-      infoOverview.innerHTML = 'OVERVIEW: ' + movieOverview;
+      infoOverview.innerHTML = 'OVERVIEW:  ' + movieOverview;
       infoCard.appendChild(infoOverview);
       listContainer.appendChild(infoCard);
 
@@ -90,9 +83,9 @@ function movieSearch(movie) {
           return response.json();
         })
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
           let moviePosterSize = response.images.poster_sizes[4];
-          console.log(moviePosterSize);
+          // console.log(moviePosterSize);
           // let moviePosterUrl = posterSizeApiUrl + moviePosterSize;
           // console.log(moviePosterUrl);
 
@@ -102,10 +95,16 @@ function movieSearch(movie) {
           moviePoster.setAttribute('src', moviePosterUrl);
         });
     });
+
+  return;
 }
 
 searchButton.addEventListener('click', function (event) {
   formSubmitHandler(event);
-
-  // clearInput();
+  let searchHistory = JSON.parse(localStorage.getItem('history')) || [];
+  const movie = searchInputElm.value;
+  movieSearch(movie);
+  searchHistory.push(movie);
+  localStorage.setItem('history', JSON.stringify(searchHistory));
+  console.log(searchHistory);
 });
