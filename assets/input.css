@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 body {
-  background-image: url('https://media.istockphoto.com/id/1194541872/vector/realistic-3d-cinema-film-strip-in-perspective-isolated-on-blue-background-vector-template.jpg?s=612x612&w=0&k=20&c=BuygDRH6v-u651E3O009P395h8crapr_CrSoXOF7R0s=');
+  background-image: url('https://images.unsplash.com/photo-1568876694728-451bbf694b83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: rgb(39, 37, 37);
+  background-color: rgba(39, 37, 37, 0.305);
   min-height: 100vh;
 }
