@@ -8,6 +8,11 @@ let formSubmitHandler = function (event) {
 
   if (searchInput) {
     movieSearch(searchInput);
+
+    searchInputElm.value = '';
+  } else {
+    searchInputElm.textContent = '';
+    alert('Please enter a movie name for your search!');
   }
   // console.log(searchInput);
 };
@@ -23,8 +28,6 @@ function movieSearch(movie) {
     userSearch +
     '&page=1&include_adult=false';
 
-  // console.log(apiUrl);
-
   fetch(apiUrl)
     .then(function (response) {
       return response.json();
@@ -35,9 +38,6 @@ function movieSearch(movie) {
       let movieTitle = response.results[0].title;
       let movieYear = response.results[0].release_date;
       let movieOverview = response.results[0].overview;
-      // console.log(movieTitle);
-      // console.log(movieYear);
-      // console.log(movieOverview);
 
       // Movie Poster
       let moviePosterPath = response.results[0].poster_path;
@@ -69,16 +69,6 @@ function movieSearch(movie) {
         'class',
         'text-2xl md:mx-auto p-4 md:text-4xl text-white'
       );
-
-      // let infoPosters = document.createElement('img');
-      // infoPosters.setAttribute('class', 'max-w-[500px]');
-
-      // let poster = document.createElement('div');
-
-      // let posterContainer = document.getElementById('poster-container');
-
-      // poster.appendChild(infoPosters);
-      // posterContainer.appendChild(poster);
 
       infoTitle.innerHTML = 'TITLE: ' + movieTitle;
       infoCard.appendChild(infoTitle);
