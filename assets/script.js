@@ -33,7 +33,7 @@ function movieSearch(movie) {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
 
       document.querySelector('#list-container').innerHTML = '';
 
@@ -43,7 +43,7 @@ function movieSearch(movie) {
 
       // Movie Poster
       let moviePosterPath = response.results[0].poster_path;
-      console.log(moviePosterPath);
+      // console.log(moviePosterPath);
 
       let listContainer = document.querySelector('#list-container');
       listContainer.setAttribute('class', 'ml-4');
@@ -83,9 +83,9 @@ function movieSearch(movie) {
           return response.json();
         })
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
           let moviePosterSize = response.images.poster_sizes[4];
-          console.log(moviePosterSize);
+          // console.log(moviePosterSize);
           // let moviePosterUrl = posterSizeApiUrl + moviePosterSize;
           // console.log(moviePosterUrl);
 
@@ -95,10 +95,16 @@ function movieSearch(movie) {
           moviePoster.setAttribute('src', moviePosterUrl);
         });
     });
+
+  return;
 }
 
 searchButton.addEventListener('click', function (event) {
   formSubmitHandler(event);
-
-  // clearInput();
+  let searchHistory = JSON.parse(localStorage.getItem('history')) || [];
+  const movie = searchInputElm.value;
+  movieSearch(movie);
+  searchHistory.push(movie);
+  localStorage.setItem('history', JSON.stringify(searchHistory));
+  console.log(searchHistory);
 });
