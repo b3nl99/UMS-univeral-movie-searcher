@@ -11,87 +11,50 @@
 
   <body>
     <header>
-      <div class="flex justify-between max-w-[1440px] mx-auto">
+      <div class="flex justify-between">
         <button
           class="text-4xl text-white bg-gray-600 border-2 rounded-lg p-2 m-4">
           <a href="./watch.html">Watchlist</a>
-        
-          
         </button>
         <button
-          class="text-4xl text-white bg-gray-600 border-2 rounded-lg p-2 my-4">
-          <a href="./history.html">Search History</a>
+          class="text-4xl text-white bg-gray-600 border-2 rounded-md p-2 m-4">
+          Search History
         </button>
       </div>
     </header>
-    <h1 class="text-4xl md:text-7xl font-bold text-center text-white my-4">
+    <h1 class="text-5xl font-bold text-center text-white my-4">
       Universal Movie Search
     </h1>
     <div class="flex justify-center">
       <input
-        class="mx-6 my-2 text-2xl w-[350px] rounded-md md:text-4xl p-2 md:w-[1080px]"
+        class="mx-4 my-4 w-[500px] rounded-md text-2xl px-4"
         type="text"
         placeholder="Search movie title"
         id="search-input" />
       <button
-        class="text-2xl text-white border rounded-lg px-2 my-2 md:text-4xl md:w-[200px]"
+        class="text-3xl text-white border rounded-md px-4 my-4"
         id="search-button">
         Search
       </button>
     </div>
     <main>
-      <section
-        class="max-w-[700px] h-[750px] md:max-w-[1440px] md:h-[750px] mx-auto my-6">
+      <section class="max-w-[1240px] mx-auto my-6">
         <div
-          class="flex flex-col items-center md:h-full md:flex-row border border-white bg-gray-800/70 rounded-lg"
-          id="poster-container">
-          <img class="w-[500px]" alt=" " id="movie-image" />
+          class="flex flex-col md:flex-row border border-white bg-gray-800 rounded-lg">
+          <img
+            class="max-w-[500px]"
+            src="https://images.thedirect.com/media/photos/FeJ0BJtWIAUecOG.jpg"
+            alt="" />
 
-          <div class="" id="list-container">
-            <!-- <div class="">
-              <h1 class="text-2xl md:mx-auto p-4 md:text-4xl text-white">
-                TITLE:
-              </h1>
-              <p class="text-xl mx-4 p-4 text-white md:text-4xl" id="title">
-                The Avengers
-              </p>
-            </div>
-            <div>
-              <h1 class="text-2xl md:mx-auto p-4 md:text-4xl text-white">
-                RELEASE DATE:
-              </h1>
-              <p class="text-xl mx-4 p-8" id="year"></p>
-            </div>
-            <div>
-              <h1 class="text-2xl md:mx-auto p-4 md:text-4xl text-white">
-                SUMMARY:
-              </h1>
-              <p class="text-xl mx-4 p-8" id="summary"></p>
-            </div> -->
-            <!-- <ul class="" id="container">
-              <li
-                class="text-2xl md:mx-auto p-4 md:text-4xl text-white"
-                id="title">
-                TITLE:
-              </li>
-              <li
-                class="text-2xl md:mx-auto p-4 md:text-4xl text-white"
-                id="year">
-                YEAR:
-              </li>
-              <li
-                class="text-2xl md:mx-auto p-4 md:text-4xl text-white"
-                id="overview">
-                OVERVIEW:
-              </li>
-            </ul> -->
-            <div>
-              <!-- <button
-                class="text-xl bg-gray-800/70 text-white border border-white rounded-md mx-4 p-4">
-                Visit TMBD
-              </button> -->
-            </div>
-          </div>
+          <ul class="flex flex-col justify-around my-8">
+            <li class="text-4xl mx-8 p-4 text-white">TITLE:</li>
+            <li class="text-4xl mx-8 p-4 text-white">YEAR:</li>
+            <li class="text-4xl mx-8 p-4 text-white">RUNTIME:</li>
+            <button
+              class="text-2xl bg-gray-800 text-white border border-white rounded-md mx-4 p-4">
+              Visit TMBD
+            </button>
+          </ul>
         </div>
       </section>
     </main>
