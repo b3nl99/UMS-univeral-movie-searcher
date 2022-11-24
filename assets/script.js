@@ -99,7 +99,7 @@ function movieSearch(movie) {
   return;
 }
 
-//
+
 searchButton.addEventListener('click', function () {
   let searchHistory = JSON.parse(localStorage.getItem('history')) || [];
   const movie = searchInputElm.value;
@@ -111,4 +111,10 @@ searchButton.addEventListener('click', function () {
 
 searchButton.addEventListener('click', function (event) {
   formSubmitHandler(event);
+  let searchHistory = JSON.parse(localStorage.getItem('history')) || [];
+  const movie = searchInputElm.value;
+  movieSearch(movie);
+  searchHistory.push(movie);
+  localStorage.setItem('history', JSON.stringify(searchHistory));
+  console.log(searchHistory);
 });
