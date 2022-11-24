@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/input.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Universal Movie Searcher</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="flex justify-between">
+        <button
+          class="text-4xl text-white bg-gray-600 border rounded-md p-2 m-4">
+          Watchlist
+        </button>
+        <button
+          class="text-4xl text-white bg-gray-600 border-2 rounded-md p-2 m-4">
+          Search History
+        </button>
+      </div>
+    </header>
+    <h1 class="text-5xl font-bold text-center text-white my-4">
+      Universal Movie Search
+    </h1>
+    <div class="flex justify-center">
+      <input
+        class="mx-4 my-4 w-[500px] rounded-md text-2xl px-4"
+        type="text"
+        placeholder="Search movie title"
+        id="search-input" />
+      <button
+        class="text-3xl text-white border rounded-md px-4 my-4"
+        id="search-button">
+        Search
+      </button>
+    </div>
+    <main>
+      <section class="max-w-[1240px] mx-auto my-6">
+        <div
+          class="flex flex-col md:flex-row border border-white bg-gray-800 rounded-lg">
+          <img
+            class="max-w-[500px]"
+            src="https://images.thedirect.com/media/photos/FeJ0BJtWIAUecOG.jpg"
+            alt="" />
+
+          <ul class="flex flex-col justify-around my-8">
+            <li class="text-4xl mx-8 p-4 text-white">TITLE:</li>
+            <li class="text-4xl mx-8 p-4 text-white">YEAR:</li>
+            <li class="text-4xl mx-8 p-4 text-white">RUNTIME:</li>
+            <button
+              class="text-2xl bg-gray-800 text-white border border-white rounded-md mx-4 p-4">
+              Visit TMBD
+            </button>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
