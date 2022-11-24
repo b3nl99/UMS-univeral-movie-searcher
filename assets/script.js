@@ -35,11 +35,13 @@ function movieSearch(movie) {
       let movieTitle = response.results[0].title;
       let movieYear = response.results[0].release_date;
       let movieOverview = response.results[0].overview;
-      let moviePoster = response.results[0].poster_path;
-      console.log(movieTitle);
-      console.log(movieYear);
-      console.log(movieOverview);
-      console.log(moviePoster);
+      // console.log(movieTitle);
+      // console.log(movieYear);
+      // console.log(movieOverview);
+
+      // Movie Poster
+      let moviePosterPath = response.results[0].poster_path;
+      console.log(moviePosterPath);
 
       let listContainer = document.querySelector('#list-container');
       listContainer.setAttribute('class', 'ml-4');
@@ -73,9 +75,8 @@ function movieSearch(movie) {
 
       let poster = document.createElement('div');
 
-      let posterContainer = document.getElementById('#poster-container');
+      let posterContainer = document.getElementById('poster-container');
 
-      infoPosters.innerHTML = moviePoster;
       poster.appendChild(infoPosters);
       posterContainer.appendChild(poster);
 
@@ -90,6 +91,21 @@ function movieSearch(movie) {
       infoOverview.innerHTML = 'OVERVIEW: ' + movieOverview;
       infoCard.appendChild(infoOverview);
       listContainer.appendChild(infoCard);
+
+      let posterSizeApiUrl =
+        'https://api.themoviedb.org/3/configuration?api_key=' + apiKey;
+
+      fetch(posterSizeApiUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (response) {
+          console.log(response);
+          let moviePosterSize = response.images.poster_sizes[4];
+          console.log(moviePosterSize);
+          let moviePoster = posterSizeApiUrl + moviePosterSize + apiKey;
+          console.log(moviePoster);
+        });
     });
 }
 
