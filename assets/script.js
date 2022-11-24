@@ -35,6 +35,8 @@ function movieSearch(movie) {
     .then(function (response) {
       console.log(response);
 
+      document.querySelector('#list-container').innerHTML = '';
+
       let movieTitle = response.results[0].title;
       let movieYear = response.results[0].release_date;
       let movieOverview = response.results[0].overview;
@@ -53,32 +55,23 @@ function movieSearch(movie) {
       );
 
       let infoTitle = document.createElement('li');
-      infoTitle.setAttribute(
-        'class',
-        'text-2xl md:mx-auto p-4 md:text-4xl text-white'
-      );
+      infoTitle.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
 
       let infoYear = document.createElement('li');
-      infoYear.setAttribute(
-        'class',
-        'text-2xl md:mx-auto p-4 md:text-4xl text-white'
-      );
+      infoYear.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
 
       let infoOverview = document.createElement('li');
-      infoOverview.setAttribute(
-        'class',
-        'text-2xl md:mx-auto p-4 md:text-4xl text-white'
-      );
+      infoOverview.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
 
-      infoTitle.innerHTML = 'TITLE: ' + movieTitle;
+      infoTitle.innerHTML = 'TITLE:  ' + movieTitle;
       infoCard.appendChild(infoTitle);
       listContainer.appendChild(infoCard);
 
-      infoYear.innerHTML = 'YEAR: ' + movieYear;
+      infoYear.innerHTML = 'YEAR:  ' + movieYear;
       infoCard.appendChild(infoYear);
       listContainer.appendChild(infoCard);
 
-      infoOverview.innerHTML = 'OVERVIEW: ' + movieOverview;
+      infoOverview.innerHTML = 'OVERVIEW:  ' + movieOverview;
       infoCard.appendChild(infoOverview);
       listContainer.appendChild(infoCard);
 
