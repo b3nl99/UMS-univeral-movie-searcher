@@ -70,15 +70,15 @@ function movieSearch(movie) {
         'text-2xl md:mx-auto p-4 md:text-4xl text-white'
       );
 
-      let infoPosters = document.createElement('img');
-      infoPosters.setAttribute('class', 'max-w-[500px]');
+      // let infoPosters = document.createElement('img');
+      // infoPosters.setAttribute('class', 'max-w-[500px]');
 
-      let poster = document.createElement('div');
+      // let poster = document.createElement('div');
 
-      let posterContainer = document.getElementById('poster-container');
+      // let posterContainer = document.getElementById('poster-container');
 
-      poster.appendChild(infoPosters);
-      posterContainer.appendChild(poster);
+      // poster.appendChild(infoPosters);
+      // posterContainer.appendChild(poster);
 
       infoTitle.innerHTML = 'TITLE: ' + movieTitle;
       infoCard.appendChild(infoTitle);
@@ -103,8 +103,13 @@ function movieSearch(movie) {
           console.log(response);
           let moviePosterSize = response.images.poster_sizes[4];
           console.log(moviePosterSize);
-          let moviePoster = posterSizeApiUrl + moviePosterSize + apiKey;
-          console.log(moviePoster);
+          // let moviePosterUrl = posterSizeApiUrl + moviePosterSize;
+          // console.log(moviePosterUrl);
+
+          let moviePoster = document.getElementById('movie-image');
+          let moviePosterUrl =
+            'https://image.tmdb.org/t/p/' + moviePosterSize + moviePosterPath;
+          moviePoster.setAttribute('src', moviePosterUrl);
         });
     });
 }
