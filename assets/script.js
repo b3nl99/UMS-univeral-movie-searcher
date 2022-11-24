@@ -35,9 +35,11 @@ function movieSearch(movie) {
       let movieTitle = response.results[0].title;
       let movieYear = response.results[0].release_date;
       let movieOverview = response.results[0].overview;
+      let moviePoster = response.results[0].poster_path;
       console.log(movieTitle);
       console.log(movieYear);
       console.log(movieOverview);
+      console.log(moviePoster);
 
       let listContainer = document.querySelector('#list-container');
       listContainer.setAttribute('class', 'ml-4');
@@ -65,6 +67,17 @@ function movieSearch(movie) {
         'class',
         'text-2xl md:mx-auto p-4 md:text-4xl text-white'
       );
+
+      let infoPosters = document.createElement('img');
+      infoPosters.setAttribute('class', 'max-w-[500px]');
+
+      let poster = document.createElement('div');
+
+      let posterContainer = document.getElementById('#poster-container');
+
+      infoPosters.innerHTML = moviePoster;
+      poster.appendChild(infoPosters);
+      posterContainer.appendChild(poster);
 
       infoTitle.innerHTML = 'TITLE: ' + movieTitle;
       infoCard.appendChild(infoTitle);
