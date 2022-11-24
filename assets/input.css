@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: url('https://media.istockphoto.com/id/1194541872/vector/realistic-3d-cinema-film-strip-in-perspective-isolated-on-blue-background-vector-template.jpg?s=612x612&w=0&k=20&c=BuygDRH6v-u651E3O009P395h8crapr_CrSoXOF7R0s=');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: rgb(39, 37, 37);
+  min-height: 100vh;
+}
