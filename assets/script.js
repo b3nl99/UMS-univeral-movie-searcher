@@ -38,6 +38,45 @@ function movieSearch(movie) {
       console.log(movieTitle);
       console.log(movieYear);
       console.log(movieOverview);
+
+      let listContainer = document.querySelector('#list-container');
+      listContainer.setAttribute('class', 'ml-4');
+
+      let infoCard = document.createElement('ul');
+      infoCard.setAttribute(
+        'class',
+        'w-full flex flex-col justify-start gap-[3rem]'
+      );
+
+      let infoTitle = document.createElement('li');
+      infoTitle.setAttribute(
+        'class',
+        'text-2xl md:mx-auto p-4 md:text-4xl text-white'
+      );
+
+      let infoYear = document.createElement('li');
+      infoYear.setAttribute(
+        'class',
+        'text-2xl md:mx-auto p-4 md:text-4xl text-white'
+      );
+
+      let infoOverview = document.createElement('li');
+      infoOverview.setAttribute(
+        'class',
+        'text-2xl md:mx-auto p-4 md:text-4xl text-white'
+      );
+
+      infoTitle.innerHTML = 'TITLE: ' + movieTitle;
+      infoCard.appendChild(infoTitle);
+      listContainer.appendChild(infoCard);
+
+      infoYear.innerHTML = 'YEAR: ' + movieYear;
+      infoCard.appendChild(infoYear);
+      listContainer.appendChild(infoCard);
+
+      infoOverview.innerHTML = 'OVERVIEW: ' + movieOverview;
+      infoCard.appendChild(infoOverview);
+      listContainer.appendChild(infoCard);
     });
 }
 
