@@ -49,10 +49,7 @@ function movieSearch(movie) {
       listContainer.setAttribute('class', 'ml-4');
 
       let infoCard = document.createElement('ul');
-      infoCard.setAttribute(
-        'class',
-        'w-full flex flex-col justify-start gap-[3rem]'
-      );
+      infoCard.setAttribute('class', 'w-full flex flex-col justify-start gap-[1rem] mt-4');
 
       let infoTitle = document.createElement('li');
       infoTitle.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
@@ -75,8 +72,7 @@ function movieSearch(movie) {
       infoCard.appendChild(infoOverview);
       listContainer.appendChild(infoCard);
 
-      let posterSizeApiUrl =
-        'https://api.themoviedb.org/3/configuration?api_key=' + apiKey;
+      let posterSizeApiUrl = 'https://api.themoviedb.org/3/configuration?api_key=' + apiKey;
 
       fetch(posterSizeApiUrl)
         .then(function (response) {
@@ -90,8 +86,7 @@ function movieSearch(movie) {
           // console.log(moviePosterUrl);
 
           let moviePoster = document.getElementById('movie-image');
-          let moviePosterUrl =
-            'https://image.tmdb.org/t/p/' + moviePosterSize + moviePosterPath;
+          let moviePosterUrl = 'https://image.tmdb.org/t/p/' + moviePosterSize + moviePosterPath;
           moviePoster.setAttribute('src', moviePosterUrl);
         });
     });
