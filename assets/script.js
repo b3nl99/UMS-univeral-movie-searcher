@@ -9,12 +9,9 @@ let formSubmitHandler = function (event) {
   if (searchInput) {
     movieSearch(searchInput);
 
-    searchInputElm.value = '';
-  } else {
-    searchInputElm.textContent = '';
-    alert('Please enter a movie name for your search!');
+    searchInputElm = '';
   }
-  // console.log(searchInput);
+  console.log(searchInput);
 };
 
 function movieSearch(movie) {
@@ -27,15 +24,14 @@ function movieSearch(movie) {
     '&language=en-US&query=' +
     userSearch +
     '&page=1&include_adult=false';
+  // console.log(apiUrl);
 
   fetch(apiUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (response) {
-      // console.log(response);
-
-      document.querySelector('#list-container').innerHTML = '';
+      console.log(response);
 
       let movieTitle = response.results[0].title;
       let movieYear = response.results[0].release_date;
@@ -48,17 +44,34 @@ function movieSearch(movie) {
       let listContainer = document.querySelector('#list-container');
       listContainer.setAttribute('class', 'ml-4');
 
-      let infoCard = document.createElement('ul');
-      infoCard.setAttribute('class', 'w-full flex flex-col justify-start gap-[1rem] mt-4');
+      let infoCard;
+      if (document.querySelector('#list-container ul')) {
+        infoCard = document.querySelector('#list-container ul');
+        infoCard.innerHTML = '';
+      } else {
+        infoCard = document.createElement('ul');
+      }
+
+      infoCard.setAttribute(
+        'class',
+        'w-full flex flex-col justify-start gap-[1rem] mt-4'
+      );
+      infoCard.setAttribute('id', 'container');
 
       let infoTitle = document.createElement('li');
-      infoTitle.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
+      infoTitle.setAttribute(
+        'class',
+        'text-2xl p-4 mt-6 md:text-4xl text-white'
+      );
 
       let infoYear = document.createElement('li');
       infoYear.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
 
       let infoOverview = document.createElement('li');
-      infoOverview.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
+      infoOverview.setAttribute(
+        'class',
+        'text-2xl p-4 mb-6 md:text-4xl text-white'
+      );
 
       infoTitle.innerHTML = 'TITLE:  ' + movieTitle;
       infoCard.appendChild(infoTitle);
@@ -72,7 +85,8 @@ function movieSearch(movie) {
       infoCard.appendChild(infoOverview);
       listContainer.appendChild(infoCard);
 
-      let posterSizeApiUrl = 'https://api.themoviedb.org/3/configuration?api_key=' + apiKey;
+      let posterSizeApiUrl =
+        'https://api.themoviedb.org/3/configuration?api_key=' + apiKey;
 
       fetch(posterSizeApiUrl)
         .then(function (response) {
@@ -86,12 +100,70 @@ function movieSearch(movie) {
           // console.log(moviePosterUrl);
 
           let moviePoster = document.getElementById('movie-image');
-          let moviePosterUrl = 'https://image.tmdb.org/t/p/' + moviePosterSize + moviePosterPath;
+          let moviePosterUrl =
+            'https://image.tmdb.org/t/p/' + moviePosterSize + moviePosterPath;
           moviePoster.setAttribute('src', moviePosterUrl);
         });
     });
 
-  return;
+  const streamingApiKey = 'fIF2Qizi8Ade6gYtOmTmEs7IryrOH4Mahe3guSLG';
+  let streamingApiUrl =
+    'https://api.watchmode.com/v1/search/?apiKey=' +
+    streamingApiKey +
+    '&search_field=name&search_value=' +
+    encodeURIComponent(userSearch);
+  console.log(streamingApiUrl);
+
+  fetch(streamingApiUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      console.log(response);
+
+      let movieId = response.title_results[0].id;
+      console.log(movieId);
+
+      let streamingSourceUrl =
+        'https://api.watchmode.com/v1/title/' +
+        movieId +
+        '/sources/?apiKey=' +
+        streamingApiKey;
+      console.log(streamingSourceUrl);
+
+      fetch(streamingSourceUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          //
+          console.log('Streaming source data is:');
+          console.log(data);
+          let streamingSources = [];
+
+          for (var i = 0; i < data.length; i++) {
+            if (data[i].type === 'sub') {
+              streamingSources.push(data[i]);
+            }
+          }
+          console.log(streamingSources);
+
+          // Loop over streaming sources array and render the buttons
+          let buttonContainer = document.createElement('div');
+          buttonContainer.setAttribute('id', 'buttonContainer');
+          document.querySelector('#container').append(buttonContainer);
+          for (var i = 0; i < streamingSources.length; i++) {
+            let watchNowButton = document.createElement('a');
+            watchNowButton.setAttribute('href', streamingSources[i].web_url);
+            watchNowButton.setAttribute('target', '_blank');
+            watchNowButton.classList =
+              'text-xl bg-gray-800/70 text-white border border-white rounded-md mx-4 p-4 hover:bg-gray-500/70';
+            watchNowButton.textContent =
+              'Watch Now on ' + streamingSources[i].name;
+            buttonContainer.append(watchNowButton);
+          }
+        });
+    });
 }
 
 searchButton.addEventListener('click', function () {
@@ -100,7 +172,6 @@ searchButton.addEventListener('click', function () {
   movieSearch(movie);
   searchHistory.push(movie);
   localStorage.setItem('history', JSON.stringify(searchHistory));
-  console.log(searchHistory);
 });
 
 // searchButton.addEventListener('click', function (event) {
