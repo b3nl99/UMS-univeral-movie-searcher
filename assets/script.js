@@ -10,7 +10,6 @@ let formSubmitHandler = function (event) {
 
     searchInputElm = '';
   }
-  console.log(searchInput);
 };
 
 function movieSearch(movie) {
@@ -29,8 +28,6 @@ function movieSearch(movie) {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
-
       let movieTitle = response.results[0].title;
       let movieYear = response.results[0].release_date;
       let movieOverview = response.results[0].overview;
@@ -105,33 +102,25 @@ function movieSearch(movie) {
     streamingApiKey +
     '&search_field=name&search_value=' +
     encodeURIComponent(userSearch);
-  console.log(streamingApiUrl);
 
   fetch(streamingApiUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
-
       let movieId = response.title_results[0].id;
-      console.log(movieId);
 
       let streamingSourceUrl =
         'https://api.watchmode.com/v1/title/' +
         movieId +
         '/sources/?apiKey=' +
         streamingApiKey;
-      console.log(streamingSourceUrl);
 
       fetch(streamingSourceUrl)
         .then(function (response) {
           return response.json();
         })
         .then(function (data) {
-          //
-          console.log('Streaming source data is:');
-          console.log(data);
           let streamingSources = [];
 
           for (var i = 0; i < data.length; i++) {
@@ -139,7 +128,6 @@ function movieSearch(movie) {
               streamingSources.push(data[i]);
             }
           }
-          console.log(streamingSources);
 
           // Loop over streaming sources array and render the buttons
           let buttonContainer = document.createElement('div');
@@ -159,6 +147,13 @@ function movieSearch(movie) {
         });
     });
 }
+
+searchInputElm.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    document.getElementById('search-button').click();
+  }
+});
 
 searchButton.addEventListener('click', function () {
   let searchHistory = JSON.parse(localStorage.getItem('history')) || [];
