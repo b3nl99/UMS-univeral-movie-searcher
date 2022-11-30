@@ -55,16 +55,16 @@ function movieSearch(movie) {
       let infoTitle = document.createElement('li');
       infoTitle.setAttribute(
         'class',
-        'text-2xl p-4 mt-6 md:text-4xl text-white'
+        'text-xl p-4 mt-6 md:text-2xl text-white'
       );
 
       let infoYear = document.createElement('li');
-      infoYear.setAttribute('class', 'text-2xl p-4 md:text-4xl text-white');
+      infoYear.setAttribute('class', 'text-xl p-4 md:text-2xl text-white');
 
       let infoOverview = document.createElement('li');
       infoOverview.setAttribute(
         'class',
-        'text-2xl p-4 mb-6 md:text-4xl text-white'
+        'text-xl p-4 mb-6 md:text-2xl text-white'
       );
 
       infoTitle.innerHTML = 'TITLE:  ' + movieTitle;
@@ -139,7 +139,7 @@ function movieSearch(movie) {
             watchNowButton.setAttribute('href', streamingSources[i].web_url);
             watchNowButton.setAttribute('target', '_blank');
             watchNowButton.classList =
-              'text-xl bg-gray-800/70 text-white border border-white rounded-md mx-4 p-4 hover:bg-gray-500/70';
+              'text-xl bg-gray-800/70 text-white border border-white rounded-md mx-4 mb-4 p-4 hover:bg-gray-500/70';
             watchNowButton.textContent =
               'Watch Now on ' + streamingSources[i].name;
             buttonContainer.append(watchNowButton);
