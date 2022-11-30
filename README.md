@@ -21,7 +21,11 @@ For this application, we used a variety of different tools to achieve the desire
 
 ## DEMO - Image of our Moive Search App
 
-![UMS](./assets/UMS_example.png)
+
+
+https://user-images.githubusercontent.com/113573524/204715918-9ddb498d-7cda-4197-bba7-4c5c277e79a1.mov
+
+
 
 ## LINKS
 
