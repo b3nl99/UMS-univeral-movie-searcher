@@ -21,8 +21,6 @@ For this application, we used a variety of different tools to achieve the desire
 
 ## DEMO - Image of our Moive Search App
 
-![UMS](./assets/UMS_example.png)
-
 ## LINKS
 
 > - GitHub Repo: https://github.com/b3nl99/UMS-universal-movie-searcher
