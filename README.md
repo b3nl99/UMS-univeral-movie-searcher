@@ -29,3 +29,4 @@ https://user-images.githubusercontent.com/113573524/204715918-9ddb498d-7cda-4197
 ## LINKS
 
 > - GitHub Repo: https://github.com/b3nl99/UMS-universal-movie-searcher
+> - Deployed Site: https://b3nl99.github.io/UMS-universal-movie-searcher/
